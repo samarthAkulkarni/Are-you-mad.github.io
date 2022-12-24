@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You Mad?</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+    * {
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        font-family: 'PT Sans', sans-serif;
+    }
+
+    body {
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    .main {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+
+    }
+
+    .box {
+        background-color: white;
+        padding: 40px 50px 40px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        border-radius: 10px;
+    }
+
+    .heading,
+    .input,
+    .next-btn {
+        text-align: center;
+    }
+
+    .heading {
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    #name {
+        width: 15em;
+        padding-left: 20px;
+        height: 30px;
+        border: 3px solid aqua;
+        outline: none;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+
+    #next {
+        padding: 5px 20px 5px 20px;
+        border-radius: 20px;
+        border: none;
+        background-color: rgb(5, 177, 177);
+        color: white;
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+
+    .yes,
+    .no {
+        padding: 5px 15px 5px 15px;
+        background-color: cyan;
+        color: white;
+        font-size: 16px;
+        font-weight: 800;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    
+
+
+
+    /* ////// all class //////////// */
+    .left {
+        margin-right: 110px;
+    }
+
+    .right {
+        margin-left: 100px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <div class="heading">What's Your Name?</div>
+            <div class="input"><input type="text" placeholder="Enter your name" id="name"></div>
+            <div class="next-btn"><button id="next">Next</button></div>
+            <div class="note">This website is made by Samarth A.K</div>
+            <div class="user-name"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    document.getElementById('next').addEventListener('click', () => {
+        var user_name = document.getElementById('name').value;
+
+        var box = document.querySelector('.box');
+        box.innerHTML = `<div class="heading">Hey! ${user_name} <br> Are You Mad? </div>
+        <div class="options">
+        <div class="movee"><button class="yes">Yes</button></div> <div class="move"> <button class="no ">No</button></div>
+        </div>`
+
+
+        document.querySelector('.yes').addEventListener('click', () => {
+            var box = document.querySelector('.box');
+            box.innerHTML = `<div class="heading">Hence proved, "${user_name}" is mad. <br> Actually I knew it That You are mad!<br> 😆️</div>`
+        })
+
+        document.querySelector('.no').addEventListener('click', () => {
+            var move = document.querySelector('.move');
+            var arr = ['left', 'right']
+            function get_random() {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            move.classList.toggle(get_random())
+        })
+
+    })
+
+
+</script>
+
+</html>
